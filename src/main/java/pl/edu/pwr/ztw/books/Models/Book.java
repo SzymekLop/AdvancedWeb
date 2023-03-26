@@ -1,4 +1,7 @@
-package pl.edu.pwr.ztw.books;
+package pl.edu.pwr.ztw.books.Models;
+
+import pl.edu.pwr.ztw.books.Models.Author;
+
 public class Book {
     private int id;
     private String title;

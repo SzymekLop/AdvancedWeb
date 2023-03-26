@@ -1,13 +1,14 @@
-package pl.edu.pwr.ztw.books;
+package pl.edu.pwr.ztw.books.Services;
 
 import org.springframework.stereotype.Service;
+import pl.edu.pwr.ztw.books.Models.Author;
 
 import java.util.ArrayList;
 import java.util.Collection;
 import java.util.List;
 
 @Service
-public class AuthorService implements IAuthorService{
+public class AuthorsService implements IAuthorsService {
 
     public static List<Author> authorsRepo = new ArrayList<>();
     static {
@@ -29,12 +30,28 @@ public class AuthorService implements IAuthorService{
     }
 
     @Override
-    public void deleteAuthor(int id) {
+    public boolean deleteAuthor(int id) {
         authorsRepo.remove(getAuthor(id));
+        return true;
     }
 
     @Override
-    public void addAuthor(int id, String name, String surname) {
-        authorsRepo.add(new Author(id, name, surname));
+    public Author createAuthor(Author author) {
+        authorsRepo.add(author);
+        return author;
+    }
+
+    @Override
+    public Author updateAuthor(int id, Author author) {
+
+        Author result = getAuthor(id);
+
+        if(author != null){
+
+            author.setName(author.getName());
+            author.setSurname(author.getSurname());
+        }
+
+        return result;
     }
 }

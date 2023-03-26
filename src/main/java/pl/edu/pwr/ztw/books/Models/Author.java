@@ -1,4 +1,4 @@
-package pl.edu.pwr.ztw.books;
+package pl.edu.pwr.ztw.books.Models;
 
 public class Author {
 
