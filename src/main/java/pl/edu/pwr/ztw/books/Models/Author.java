@@ -1,5 +1,7 @@
 package pl.edu.pwr.ztw.books.Models;
 
+import java.util.ArrayList;
+
 public class Author {
 
     private int id;
@@ -30,5 +32,12 @@ public class Author {
 
     public void setSurname(String surname) {
         this.surname = surname;
+    }
+
+    public static void main(String[] args) {
+
+        ArrayList<Integer> emp = new ArrayList<>();
+        System.out.println(emp.stream().filter(i -> i > 0).allMatch(i -> i != 1));
+
     }
 }

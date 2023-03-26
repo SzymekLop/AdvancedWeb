@@ -1,18 +1,18 @@
 package pl.edu.pwr.ztw.books.Models;
 
-import pl.edu.pwr.ztw.books.Models.Author;
-
 public class Book {
     private int id;
     private String title;
     private Author author;
-    int pages;
+    private int pages;
+    private boolean isAvailable;
+
     public Book(int id, String title, Author author, int pages) {
         this.id = id;
         this.title = title;
         this.author = author;
         this.pages = pages;
-
+        this.isAvailable = true;
     }
     public int getId() {
         return id;
@@ -36,4 +36,11 @@ public class Book {
         this.pages = pages;
     }
 
+    public boolean isAvailable() {
+        return isAvailable;
+    }
+
+    public void setAvailable(boolean available) {
+        isAvailable = available;
+    }
 }

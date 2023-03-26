@@ -1,17 +1,18 @@
 package pl.edu.pwr.ztw.books.Services;
 
-import pl.edu.pwr.ztw.books.Models.Book;
 import pl.edu.pwr.ztw.books.Models.Rental;
+import pl.edu.pwr.ztw.books.Models.RentalTransportObject;
 
 import java.util.Collection;
-import java.util.Date;
 
 public interface IRentalsService {
 
     public abstract Collection<Rental> getRentals();
     public abstract Rental getRental(int id);
 
-    public abstract void returnBook(int rentalId);
+    public abstract Rental returnBook(int id);
 
-    public abstract void addRental(int id, Book book, String client, Date rentDate, Date returnDate);
+    public abstract Rental createRental(RentalTransportObject rental);
+
+    public boolean isBookAvailable(int bookId);
 }
