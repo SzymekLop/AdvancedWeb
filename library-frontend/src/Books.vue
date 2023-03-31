@@ -32,9 +32,10 @@ export default {
   ,
   methods:{
     addBook(book){
-      axios.post('http://localhost:8080/books/add', {
+      axios.put('http://localhost:8080/books', {
+        id: book.id,
         title: book.title,
-        author: book.author,
+        authorId: book.author,
         pages: book.pages
       })
       .then(() => { this.getBooks()})
@@ -42,22 +43,23 @@ export default {
     },
 
     getBooks(){
-        axios.get('http://localhost:8080/books/get').then(data => {this.books = data.data}).catch(e => alert(e))
+        axios.get('http://localhost:8080/books').then(data => {this.books = data.data}).catch(e => alert(e))
     },
 
     getAuthors(){
-      axios.get('http://localhost:8080/authors/get').then(data => {this.authors = data.data}).catch(e => alert(e))
+      axios.get('http://localhost:8080/authors/').then(data => {this.authors = data.data}).catch(e => alert(e))
     },
 
     deleteBook(id){
-      axios.delete(`http://localhost:8080/books/delete/${id}`).then(() => {this.getBooks()}).catch(e => alert(e))
+      axios.delete(`http://localhost:8080/books/${id}`).then(() => {this.getBooks()}).catch(e => alert(e))
     },
 
     updateBook(book){
-      axios.put(`http://localhost:8080/books/update/${book.id}`,
+      axios.put(`http://localhost:8080/books/${book.id}`,
       {
+        id: book.id,
         title: book.title,
-        author: book.author,
+        authorId: book.author,
         pages: book.pages
       }).then(() => {this.getBooks()}).catch(e => alert(e))
     },    

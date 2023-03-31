@@ -13,12 +13,12 @@
             <div class="form-field">
                 <label> Author: </label>
 
-                <select v-model="book.author">
-                    <option value="" disabled>Select author</option>
-                    <option v-for="author in authorsSource" :value="author.id" :key="author.id">
-                        {{ author.firstName + " " + author.lastName }}
-                    </option>
-                </select>
+                <input v-model="book.author" 
+                type="text"
+                 name="author"
+                 :class="{ 'has-error': submitting && invalidTitle}"
+                 @focus="clearStatus"
+                 @keypress="clearStatus">
             </div>
             <div class="form-field">
                 <label> Pages: </label>

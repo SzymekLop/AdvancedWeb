@@ -30,26 +30,28 @@ export default {
     },
     methods: {
         addAuthor(author) {
-            axios.post('http://localhost:8080/authors/add', {
-                    firstName: author.firstName,
-                    lastName: author.lastName
+            axios.put('http://localhost:8080/authors', {
+                    id: Math.floor(Math.random() * 1000),
+                    name: author.firstName,
+                    surname: author.lastName
                 })
                 .then(() => { this.getAuthors() })
                 .catch(e => alert(e))
         },
 
         getAuthors() {
-            axios.get('http://localhost:8080/authors/get').then(data => { this.authors = data.data }).catch(e => alert(e))
+            axios.get('http://localhost:8080/authors').then(data => { this.authors = data.data }).catch(e => alert(e))
         },
 
         deleteAuthor(id) {
-            axios.delete(`http://localhost:8080/authors/delete/${id}`).then(() => { this.getAuthors() }).catch(e => alert(e))
+            axios.delete(`http://localhost:8080/authors/${id}`).then(() => { this.getAuthors() }).catch(e => alert(e))
         },
 
         updateAuthor(author) {
-            axios.put(`http://localhost:8080/books/update/${author.id}`, {
-                firstName: author.firstName,
-                lastName: author.lastName
+            axios.put(`http://localhost:8080/books/${author.id}`, {
+              id: author.id,
+                name: author.firstName,
+                surname: author.lastName
             }).then(() => { this.getAuthors() }).catch(e => alert(e))
         },
     },
