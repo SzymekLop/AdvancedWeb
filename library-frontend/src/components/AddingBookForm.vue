@@ -2,6 +2,15 @@
     <div class="adding-book-form-container">
         <form @submit.prevent="handleSubmit" class="adding-book-form">         
             <div class="form-field">
+
+            <label> Book id: </label>
+                <input v-model="book.id"
+                 type="text"
+                 name="title"
+                 @focus="clearStatus"
+                 @keypress="clearStatus"> 
+            </div>
+            <div class="form-field">
                 <label> Title: </label>
                 <input v-model="book.title"
                  type="text"
@@ -13,9 +22,9 @@
             <div class="form-field">
                 <label> Author: </label>
 
-                <input v-model="book.author" 
+                <input v-model="book.authorId" 
                 type="text"
-                 name="author"
+                 name="authorId"
                  :class="{ 'has-error': submitting && invalidTitle}"
                  @focus="clearStatus"
                  @keypress="clearStatus">
@@ -44,9 +53,6 @@
 <script>
 export default {
     name: "adding-book-form",
-    props: {
-        authorsSource: Array,
-    },
     data(){
         return {
             submitting: false,
@@ -55,10 +61,9 @@ export default {
             book: {
                 id: '',
                 title: '',
-                author: '',
+                authorId: '',
                 pages: ''
-            },
-            authorOptions: []
+            }
 
         }
     },    
@@ -76,12 +81,22 @@ export default {
                 return
             }
 
-            this.$emit('add:book', this.book)
+
+            if (this.book.id  == '')  {
+                this.book.id = Math.floor(Math.random() * 1000)
+                this.$emit('add:book', this.book)
+            } else {
+                this.$emit('update:book', this.book)
+            }
+
+
+            console.log(this.book)
+            
 
             this.book = {
                 id: '',
                 title: '',
-                author: '',
+                authorId: '',
                 pages: ''
             }
             this.error = false;
@@ -94,7 +109,7 @@ export default {
             return this.book.title === ''
         },
         invalidAuthor(){
-            return this.book.author === ''
+            return this.book.authorId === ''
         },
         invalidPages(){
             return this.book.pages === ''

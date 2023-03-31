@@ -6,7 +6,7 @@
       <a class="page-button button shadow-box" href="authors">Authors</a>
     </div>
     <div id="page-content" class="content-box shadow-box">
-      <adding-book-form @add:book="addBook" :authorsSource="authors"></adding-book-form>
+      <adding-book-form @add:book="addBook" @update:book="updateBook" :authorsSource="authors"></adding-book-form>
       <books-table @onDelete="deleteBook" :booksSource="books" @onUpdate="updateBook"></books-table>
     </div>
   </div>
@@ -35,7 +35,7 @@ export default {
       axios.put('http://localhost:8080/books', {
         id: book.id,
         title: book.title,
-        authorId: book.author,
+        authorId: book.authorId,
         pages: book.pages
       })
       .then(() => { this.getBooks()})
@@ -47,7 +47,7 @@ export default {
     },
 
     getAuthors(){
-      axios.get('http://localhost:8080/authors/').then(data => {this.authors = data.data}).catch(e => alert(e))
+      axios.get('http://localhost:8080/authors').then(data => {this.authors = data.data}).catch(e => alert(e))
     },
 
     deleteBook(id){
@@ -59,7 +59,7 @@ export default {
       {
         id: book.id,
         title: book.title,
-        authorId: book.author,
+        authorId: book.authorId,
         pages: book.pages
       }).then(() => {this.getBooks()}).catch(e => alert(e))
     },    

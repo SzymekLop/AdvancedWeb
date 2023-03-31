@@ -6,7 +6,7 @@
             <a class="page-button button shadow-box btn-active" href="authors">Authors</a>
         </div>
         <div id="page-content" class="content-box shadow-box">
-            <adding-author-form @add:author="addAuthor"></adding-author-form>
+            <adding-author-form @update:author="updateAuthor" @add:author="addAuthor"></adding-author-form>
             <authors-table :authorsSource="authors" @onDelete="deleteAuthor" @onUpdate="updateAuthor"></authors-table>
         </div>
     </div>
@@ -31,9 +31,19 @@ export default {
     methods: {
         addAuthor(author) {
             axios.put('http://localhost:8080/authors', {
-                    id: Math.floor(Math.random() * 1000),
-                    name: author.firstName,
-                    surname: author.lastName
+                    id: this.author.id,
+                    name: author.name,
+                    surname: author.surname
+                })
+                .then(() => { this.getAuthors() })
+                .catch(e => alert(e))
+        },
+
+        updateAuthor(author) {
+            axios.put(`http://localhost:8080/authors/${author.id}`, {
+                    id: author.id,
+                    name: author.name,
+                    surname: author.surname
                 })
                 .then(() => { this.getAuthors() })
                 .catch(e => alert(e))
@@ -47,13 +57,13 @@ export default {
             axios.delete(`http://localhost:8080/authors/${id}`).then(() => { this.getAuthors() }).catch(e => alert(e))
         },
 
-        updateAuthor(author) {
-            axios.put(`http://localhost:8080/books/${author.id}`, {
-              id: author.id,
-                name: author.firstName,
-                surname: author.lastName
-            }).then(() => { this.getAuthors() }).catch(e => alert(e))
-        },
+        // updateBookAuthor(author) {
+        //     axios.put(`http://localhost:8080/books/${author.id}`, {
+        //         id: author.id,
+        //         name: author.name,
+        //         surname: author.surname
+        //     }).then(() => { this.getAuthors() }).catch(e => alert(e))
+        // },
     },
     mounted() {
         this.getAuthors()

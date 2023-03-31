@@ -1,12 +1,20 @@
 <template>
     <div class="adding-author-form-container">
-        <form @submit.prevent="handleSubmit" class="adding-author-form">         
+        <form @submit.prevent="handleSubmit" class="adding-author-form">      
+            <div class="form-field">
+                <label> Id: </label>
+                <input v-model="author.id"
+                 type="text"
+                 name="authorid"
+                 @focus="clearStatus"
+                 @keypress="clearStatus"> 
+            </div>   
             <div class="form-field">
 
                 <label> First Name: </label>
-                <input v-model="author.firstName"
+                <input v-model="author.name"
                  type="text"
-                 name="title"
+                 name="name"
 
                  :class="{ 'has-error': submitting && invalidTitle}"
                  @focus="clearStatus"
@@ -15,9 +23,9 @@
             </div>
             <div class="form-field">
                 <label> Last Name: </label>
-                <input v-model="author.lastName"
+                <input v-model="author.surname"
                  type="text"
-                 name="author"
+                 name="surname"
                  :class="{ 'has-error': submitting && invalidAuthor}"
                  @focus="clearStatus"
                  @keypress="clearStatus"> 
@@ -44,8 +52,8 @@ export default {
             success: false,
             author: {
                 id: '',
-                firstName: '',
-                lastName: ''
+                name: '',
+                surname: ''
             }
         }
     },
@@ -63,12 +71,18 @@ export default {
                 return
             }
 
-            this.$emit('add:author', this.author)
+            if (this.author.id == "") {
+                this.author.id = Math.floor(Math.random() * 1000)
+                this.$emit('add:author', this.author)
+            }
+
+            
+            this.$emit('update:author', this.author)
 
             this.author = {
                 id: '',
-                firstName: '',
-                lastName: ''
+                name: '',
+                surname: ''
             }
             this.error = false;
             this.success = true;
@@ -77,10 +91,10 @@ export default {
     },
     computed: {
         invalidFirstName(){
-            return this.author.firstName === ''
+            return this.author.name === ''
         },
         invalidLastName(){
-            return this.author.lastName === ''
+            return this.author.surname === ''
         },
     }
 }
