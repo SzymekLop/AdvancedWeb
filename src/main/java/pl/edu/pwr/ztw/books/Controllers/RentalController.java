@@ -10,6 +10,7 @@ import pl.edu.pwr.ztw.books.Models.RentalTransportObject;
 import pl.edu.pwr.ztw.books.Services.IBooksService;
 import pl.edu.pwr.ztw.books.Services.IRentalsService;
 
+@CrossOrigin(origins = "http://localhost:8081/")
 @RestController
 public class RentalController {
     @Autowired
