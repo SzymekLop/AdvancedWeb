@@ -2,17 +2,15 @@ package pl.edu.pwr.ztw.books.Models;
 
 import nonapi.io.github.classgraph.json.Id;
 
-import javax.annotation.processing.Generated;
-import java.util.ArrayList;
+public class AuthorTransportObject {
 
-public class Author {
-    @Id
+    private static int INDEX = 4;
     private int id;
     private String name;
     private String surname;
 
-    public Author(int id, String name, String surname) {
-        this.id = id;
+    public AuthorTransportObject(String name, String surname) {
+        this.id = INDEX++;
         this.name = name;
         this.surname = surname;
     }

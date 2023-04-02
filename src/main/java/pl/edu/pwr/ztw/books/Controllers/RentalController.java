@@ -10,6 +10,9 @@ import pl.edu.pwr.ztw.books.Models.RentalTransportObject;
 import pl.edu.pwr.ztw.books.Services.IBooksService;
 import pl.edu.pwr.ztw.books.Services.IRentalsService;
 
+import java.util.ArrayList;
+import java.util.Collection;
+
 @RestController
 public class RentalController {
     @Autowired
@@ -69,5 +72,10 @@ public class RentalController {
         else {
             return new ResponseEntity<>(rentalsService.isBookAvailable(id), HttpStatus.OK);
         }
+    }
+
+    @GetMapping(value = "/rentals/book")
+    public ResponseEntity<Object> freeBooks(){
+        return new ResponseEntity<>(rentalsService.freeBooks(), HttpStatus.OK);
     }
 }
