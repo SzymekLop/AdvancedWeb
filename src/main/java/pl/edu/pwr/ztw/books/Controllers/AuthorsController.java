@@ -8,6 +8,7 @@ import pl.edu.pwr.ztw.books.Models.Author;
 import pl.edu.pwr.ztw.books.Models.AuthorTransportObject;
 import pl.edu.pwr.ztw.books.Services.IAuthorsService;
 
+@CrossOrigin(origins = "http://localhost:8081/")
 @RestController
 public class AuthorsController {
 

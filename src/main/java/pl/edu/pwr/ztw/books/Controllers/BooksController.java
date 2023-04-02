@@ -8,6 +8,7 @@ import pl.edu.pwr.ztw.books.Models.Book;
 import pl.edu.pwr.ztw.books.Models.BookTransportObject;
 import pl.edu.pwr.ztw.books.Services.IBooksService;
 
+@CrossOrigin(origins = "http://localhost:8081/")
 @RestController
 public class BooksController {
     @Autowired
