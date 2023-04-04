@@ -2,13 +2,14 @@ package pl.edu.pwr.ztw.books.Models;
 
 public class BookTransportObject {
 
+    private static int index = 4;
     private int id;
     private String title;
     private int authorId;
     private int pages;
 
-    public BookTransportObject(int id, String title, int authorId, int pages) {
-        this.id = id;
+    public BookTransportObject(String title, int authorId, int pages) {
+        this.id = index++;
         this.title = title;
         this.authorId = authorId;
         this.pages = pages;

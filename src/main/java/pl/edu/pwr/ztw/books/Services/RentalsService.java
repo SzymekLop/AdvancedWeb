@@ -63,4 +63,15 @@ public class RentalsService implements IRentalsService{
             return book.isAvailable();
         }
     }
+    @Override
+    public Collection<Object> freeBooks(){
+        Collection<Book> result = booksService.getBooks();
+        ArrayList<Object> free = new ArrayList<>();
+        for(Book book : result){
+            if(book.isAvailable()){
+                free.add(book);
+            }
+        }
+        return free;
+    }
 }

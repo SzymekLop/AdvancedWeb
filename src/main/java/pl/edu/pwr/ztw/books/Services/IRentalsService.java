@@ -14,5 +14,7 @@ public interface IRentalsService {
 
     public abstract Rental createRental(RentalTransportObject rental);
 
-    public boolean isBookAvailable(int bookId);
+    public abstract boolean isBookAvailable(int bookId);
+
+    public abstract Collection<Object> freeBooks();
 }

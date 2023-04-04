@@ -2,6 +2,7 @@ package pl.edu.pwr.ztw.books.Services;
 
 import org.springframework.stereotype.Service;
 import pl.edu.pwr.ztw.books.Models.Author;
+import pl.edu.pwr.ztw.books.Models.AuthorTransportObject;
 
 import java.util.ArrayList;
 import java.util.Collection;
@@ -36,20 +37,21 @@ public class AuthorsService implements IAuthorsService {
     }
 
     @Override
-    public Author createAuthor(Author author) {
-        authorsRepo.add(author);
-        return author;
+    public Author createAuthor(AuthorTransportObject author) {
+        Author result = new Author(author.getId(), author.getName(), author.getSurname());
+        authorsRepo.add(result);
+        return result;
     }
 
     @Override
-    public Author updateAuthor(int id, Author author) {
+    public Author updateAuthor(int id, AuthorTransportObject author) {
 
         Author result = getAuthor(id);
 
-        if(author != null){
+        if(result != null){
 
-            author.setName(author.getName());
-            author.setSurname(author.getSurname());
+            result.setName(author.getName());
+            result.setSurname(author.getSurname());
         }
 
         return result;
