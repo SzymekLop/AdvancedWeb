@@ -10,13 +10,10 @@ import pl.edu.pwr.ztw.books.Models.RentalTransportObject;
 import pl.edu.pwr.ztw.books.Services.IBooksService;
 import pl.edu.pwr.ztw.books.Services.IRentalsService;
 
-<<<<<<< HEAD
 import java.util.ArrayList;
 import java.util.Collection;
 
-=======
 @CrossOrigin(origins = "http://localhost:8081/")
->>>>>>> fb471dc8a80679d3b2c297fc5900eca507e2498e
 @RestController
 public class RentalController {
     @Autowired

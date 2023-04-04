@@ -5,7 +5,6 @@
     <td>{{ book.authorId }}</td>
     <td>{{ book.pages }}</td>
     <td>
-      <!--  <button class="book-update-button" @click="onUpdate">Update</button> -->
       <button class="page-button button-small shadow-box" @click="onDelete">
         Delete
       </button>
@@ -14,7 +13,6 @@
 </template>
 
 <script>
-// import axios from "axios";
 export default {
   name: "BookComponent",
   props: {
@@ -26,15 +24,6 @@ export default {
     onDelete() {
       this.$emit("onDelete", this.book.id);
     },
-    onUpdate() {
-      this.$emit("onUpdate", this.book);
-    },
-    // getAuthor(act_book) {
-    //   axios
-    //     .get(`authors/${act_book.id}`)
-    //     .then((data) => data.data)
-    //     .catch((e) => alert(e));
-    // },
   },
 };
 </script>

@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <div id="page-header" class="content-box shadow-box">
-      <h1 class="page-header-item"><a class="page-button" href="/">Book Service</a></h1>
+      <!-- //<h1 class="page-header-item"><a class="page-button" href="/">Book Service</a></h1> -->
       <a class="page-button button shadow-box" href="books">Books</a>
       <a class="page-button button shadow-box" href="authors">Authors</a>
     </div>
@@ -19,17 +19,16 @@ export default {
 </script>
 
 <style>
-body {
+/* body {
   height: 100%;
-}
+} */
 
-.bg-image { 
+/* .bg-image { 
   position: fixed;
   left: -15px;
   top: -15px;
   z-index: -1;
   display: block;
-  background-image: url("assets/bg1.jpg");
   background-position: center; 
   background-repeat: no-repeat; 
   background-size: cover;
@@ -40,12 +39,11 @@ body {
   -o-filter: blur(4px);
   -ms-filter: blur(4px);
   filter: blur(4px);
-}
+} */
 
 #app {
   font-family: Avenir, Helvetica, Arial, sans-serif;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
+
   text-align: center;
   color: #2c3e50;
 }
@@ -61,7 +59,7 @@ body {
 
 #page-header .page-header-item {
   font-size: 45px;
-  color: white;
+  color: rgb(0, 0, 0);
   margin-right: 25%;
 }
 
@@ -69,58 +67,58 @@ body {
   padding: 25px 25px;
 }
 
-.content-box {
+/* .content-box {
   margin: 0 auto;
-  background-color: #a98467;
-  border-radius: 15px;
+  border-radius: 10px;
   width: 65%;
   opacity: .99;
-  color: white;
-  text-shadow: 1px 1px 4px black;
-}
+  color: rgb(0, 0, 0);
+  box-shadow:  3px 3px 5px 3px rgba(0,0,0,.2);
+} */
 
 
 .shadow-box { 
-  -webkit-box-shadow: 3px 3px 10px -3px #03071e; 
-  -moz-box-shadow:    3px 3px 10px -3px #03071e; 
-  box-shadow:         3px 3px 10px -3px #03071e;
+
+  box-shadow:  3px 3px 5px 3px rgba(0,0,0,.2);
 }
 
 .page-button {
-  color: white;
+  color: rgb(0, 0, 0);
   text-decoration: none;
 }
 
 .button {
-  background-color: #a98467;
-  border: 3px white solid;
-  border-radius: 30px;
+
+  border-radius: 10px;
   padding: 15px;
   font-size: 22px;
   min-width: 150px;
   margin: 15px;
-  text-shadow: 1px 1px 4px black;
   cursor: pointer;
+  box-shadow:  3px 3px 5px 3px rgba(0,0,0,.2);
 }
 
 .button:hover {
-  background-color: #91755e;
+  background-color: #000000;
+  color: white;
 }
 
 .button-small {
-  background-color: #a98467;
-  border: 2px white solid;
-  border-radius: 15px;
+  background-color: #ffffff;
+
+  border-radius: 10px;
   padding: 5px;
   font-size: 17px;
   min-width: 90px;
   margin: 5px;
-  text-shadow: 1px 1px 4px black;
   cursor: pointer;
+  box-shadow:  3px 3px 5px 3px rgba(0,0,0,.2);
 }
 
 .button-small:hover {
-  background-color: #91755e;
+  background-color: #000000;
+  color: white;
+
 }
 
 .btn-active {
