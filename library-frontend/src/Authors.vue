@@ -2,18 +2,17 @@
   <div id="app">
     <div id="page-header" class="content-box shadow-box">
       <h1 class="page-header-item">
-        <a class="page-button" href="/">Book Service</a>
+        <a class="page-button" href="/">Library App</a>
       </h1>
-      <a class="page-button button shadow-box" href="books">Books</a>
-      <a class="page-button button shadow-box btn-active" href="authors"
-        >Authors</a
-      >
+      <a class="page-button button shadow-box" href="books">Książki</a>
+      <a class="page-button button shadow-box" href="authors">Autorzy</a>
     </div>
     <div id="page-content" class="content-box shadow-box">
       <adding-author-form
         @update:author="updateAuthor"
         @add:author="addAuthor"
       ></adding-author-form>
+
       <authors-table
         :authorsSource="authors"
         @onDelete="deleteAuthor"
@@ -28,7 +27,7 @@ import AuthorsTable from "./components/AuthorsTable.vue";
 import axios from "axios";
 
 export default {
-  name: "App",
+  name: "AuthorsView",
   components: {
     AddingAuthorForm,
     AuthorsTable,
@@ -42,7 +41,6 @@ export default {
     addAuthor(author) {
       axios
         .put("http://localhost:8080/authors", {
-          id: author.id,
           name: author.name,
           surname: author.surname,
         })

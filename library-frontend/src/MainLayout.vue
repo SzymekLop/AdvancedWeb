@@ -1,53 +1,69 @@
 <template>
   <div id="outer-page">
-    <!-- <nav>
+    <nav>
+      <h2>MENU</h2>
 
       <ul>
         <li>
-          <router-link to="/"
-            ><div class="button">Strona główna</div></router-link
-          >
+          <router-link to="/">
+            <div class="button">Strona główna</div>
+          </router-link>
         </li>
+
         <li>
-          <router-link to="/authors"
-            ><div class="button">Autorzy</div></router-link
-          >
+          <router-link to="/authors">
+            <div class="button">Autorzy</div>
+          </router-link>
         </li>
+
         <li>
-          <router-link to="/books"
-            ><div class="button">Książki</div></router-link
-          >
+          <router-link to="/books">
+            <div class="button">Książki</div>
+          </router-link>
         </li>
       </ul>
-    </nav> -->
+    </nav>
+
     <div id="main-content">
-<router-view />
+      <router-view />
     </div>
-    
   </div>
 </template>
   
-  <script>
+<script>
 export default {
   name: "MainLayout",
 };
 </script>
 
-  <style scoped>
-  #main-content {
-    width: 70%;
-  }
+<style scoped>
+#main-content {
+  width: 60%;
+}
 
-  .outer-page {
-    display: flex;
-    flex-direction: row;
-    width: 90vw;
+#outer-page {
+  display: flex;
+  flex-direction: row;
+  width: 90vw;
+  justify-content: space-between;
+}
 
-  }
+nav {
+  width: 20%;
+}
 
-  nav {
-    width: 20%;;
-  }
+h2 {
+  font-size: 40px;
+}
+
+a {
+  text-decoration: none;
+}
+
+li {
+  list-style-type: none;
+}
+
 .button {
   border-radius: 10px;
   padding: 15px;

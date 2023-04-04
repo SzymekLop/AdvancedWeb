@@ -4,7 +4,6 @@
     <td>{{ author.name }}</td>
     <td>{{ author.surname }}</td>
     <td>
-      <!-- <button class="author-update-button" @click="onUpdate">Update</button> -->
       <button class="page-button button-small shadow-box" @click="onDelete">
         Delete
       </button>

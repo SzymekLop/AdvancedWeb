@@ -2,7 +2,7 @@
   <tr>
     <td>{{ book.id }}</td>
     <td>{{ book.title }}</td>
-    <td>{{ book.authorId }}</td>
+    <td>{{ book.author.name + " " + book.author.name + " (" + book.author.id + ")"}}</td>
     <td>{{ book.pages }}</td>
     <td>
       <button class="page-button button-small shadow-box" @click="onDelete">

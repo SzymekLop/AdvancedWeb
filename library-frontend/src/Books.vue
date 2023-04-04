@@ -1,16 +1,15 @@
 <template>
-  <div id="app">
+  <div>
     <div id="page-header" class="content-box shadow-box">
-      <h1 class="page-header-item">
-        <a class="page-button" href="/">Book Service</a>
-      </h1>
-      <a class="page-button button shadow-box btn-active" href="books">Books</a>
-      <a class="page-button button shadow-box" href="authors">Authors</a>
-    </div>
+            <h1 class="page-header-item"><a class="page-button" href="/">Library App</a></h1>
+            <a class="page-button button shadow-box" href="books">Książki</a>
+            <a class="page-button button shadow-box" href="authors">Autorzy</a>
+        </div>
     <div id="page-content" class="content-box shadow-box">
       <adding-book-form
         @add:book="addBook"
         @update:book="updateBook"
+        :authorsSource="authors"
       ></adding-book-form>
       <books-table @onDelete="deleteBook" :booksSource="books"></books-table>
     </div>
@@ -23,7 +22,7 @@ import BooksTable from "./components/BooksTable.vue";
 import axios from "axios";
 
 export default {
-  name: "App",
+  name: "BooksView",
   components: {
     AddingBookForm,
     BooksTable,
@@ -31,13 +30,22 @@ export default {
   data() {
     return {
       books: [],
+      authors: [],
     };
   },
   methods: {
+
+    getAuthors() {
+      axios
+        .get("http://localhost:8080/authors")
+        .then((data) => {
+          this.authors = data.data;
+        })
+        .catch((e) => alert(e));
+    },
     addBook(book) {
       axios
         .put("http://localhost:8080/books", {
-          id: book.id,
           title: book.title,
           authorId: book.authorId,
           pages: book.pages,
@@ -86,7 +94,8 @@ export default {
     },
   },
   mounted() {
-    this.getBooks();
+    this.getBooks(),
+    this.getAuthors();
   },
 };
 </script>
